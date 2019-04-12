@@ -1,5 +1,6 @@
 import React, { Component} from 'react';
 import FileButton from './components/FileButton';
+import logo from '../../images/airdrop_parachute.png';
 import './airdrop.css';
 
 
@@ -26,6 +27,9 @@ class Airdrop extends Component {
     return(
       <div className="airdrop">
         <div className="airdrop-grid">
+          <div className="airdrop-grid-item grid-logo">
+            <img src={logo} className="grid-logo-img" alt="logo" />
+          </div>
           <div className="airdrop-grid-item file-input-btn">
             <FileButton setCsvFile={this.setCsvFile}/>
           </div>

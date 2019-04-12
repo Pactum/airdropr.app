@@ -27,6 +27,11 @@
   grid-column-start: 3;
 }
 
+.grid-logo {
+  grid-column-start: 1;
+  height: 200px;
+}
+
 .grid-csv-input {
   grid-column: span 3;
   grid-row-start: 2;
@@ -81,4 +86,9 @@
 
 .creat-list {
   list-style: none;
+}
+
+.grid-logo-img {
+  width: 80%;
+  margin-left: 20px;
 }
