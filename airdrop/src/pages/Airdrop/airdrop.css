@@ -4,11 +4,11 @@
 
 .airdrop-grid {
   display: grid;
-  grid-template-rows: 150px 100px 1fr;
+  grid-template-rows: 0.5fr 0.5fr 1fr;
   grid-template-columns: repeat(3, 1fr);
   background-color: white;
   border-radius: 5px;
-  grid-gap: 50px;
+  grid-gap: 20px;
 }
 
 .airdrop-grid-item {
@@ -38,7 +38,7 @@
 }
 
 .grid-batch-list {
-  grid-column-start: 2;
+  grid-column: span 3;
   grid-row-start: 3;
 }
 
@@ -60,6 +60,7 @@
   border-radius: 5px;
   background-color: rgba(0, 0, 0, 0.1);
   padding: 4px 20px 5px 20px;
+  width: 169px;
 }
 
 .input-label:hover {
@@ -84,11 +85,53 @@
 }
 
 
-.creat-list {
+.create-list {
   list-style: none;
+  padding-left: 0;
 }
 
+.create-list-item {
+  margin-bottom: 10px;
+}
 .grid-logo-img {
   width: 90px;
   margin-left: 20px;
+}
+
+
+/* recipient table */
+.recipient-table {
+  border: 1px solid #777;
+  border-collapse: collapse;
+  padding: 0px;
+  box-shadow: 1px 1px 2px #aaaaaa;
+}
+
+.table-header {
+  font-size: 1.2rem;
+  color: #222;
+  padding: 5px;
+  border-bottom: 1px solid #777;
+  background-color: rgba(0,0,0,0.2);
+}
+
+.table-cell {
+  color: #777;
+  font-weight: 400;
+  padding: 5px;
+}
+
+.text-bold {
+  font-weight: bold;
+  font-size: 1.4em;
+}
+
+.dark {
+  background-color: #F2F2F2;
+  border-right: 1px solid rgba(255,255,255,0.7);
+}
+
+.light {
+  background-color: #FAFAFA;
+  border-right: 1px solid rgba(0,0,0,0.05);
 }

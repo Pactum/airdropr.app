@@ -9,6 +9,17 @@ class Airdrop extends Component {
     super(props);
     this.state = {
       file: '',
+      recipientAddress: '',
+      recipientAmount: '',
+      recipientList: [
+        {
+          address: "0xC1B28CF32e6ea25b9191118DE97f3De9d7bC2803",
+          amount: 2000,
+        },{
+          address: "0xeD52517b554594a23CDfF0D6A738656221774bD8",
+          amount: 100,
+        }
+      ],
       errMsg: '',
     }
   }
@@ -19,7 +30,11 @@ class Airdrop extends Component {
 
   handleAdd = (e) => {
     e.preventDefault();
-    console.log(e);
+    console.log(e, this.state.recipientList);
+  }
+
+  isOdd = (num) => {
+    return num % 2;
   }
 
   render() {
@@ -34,15 +49,15 @@ class Airdrop extends Component {
             <FileButton setCsvFile={this.setCsvFile}/>
           </div>
           <div className="airdrop-grid-item grid-csv-input">
-            <ul className="creat-list">
-              <li>
-                <h4>
+            <ul className="create-list">
+              <li className="create-list-item">
+                <h4 className="text-align-center">
                   Create a list of airdrop recipients by adding erc20 wallet
                   addresses with the amount of tokens you would like to send.
                 </h4>
               </li>
               <li>
-                <form onSubmit={this.handleAdd}>
+                <form className="flex" onSubmit={this.handleAdd}>
                   <input
                     placeholder="recipient address"
                     type="text"
@@ -57,7 +72,24 @@ class Airdrop extends Component {
             </ul>
           </div>
           <div className="airdrop-grid-item grid-batch-list">
-            {this.state.errMsg}
+            <table className="recipient-table">
+              <tbody>
+                <tr>
+                  <th className="table-header">address</th>
+                  <th className="table-header">amount</th>
+                </tr>
+                {this.state.recipientList.map((recipient, index)  => {
+                  let cssName;
+                  (this.isOdd(index)) ? cssName = "table-cell dark" : cssName = "table-cell light";
+                  return(
+                    <tr key={index}>
+                      <td className={cssName}>{recipient.address}</td>
+                      <td className={cssName}>{recipient.amount}</td>
+                    </tr>
+                  )
+                })}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
