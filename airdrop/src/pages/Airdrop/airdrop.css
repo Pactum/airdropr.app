@@ -1,0 +1,94 @@
+.airdrop {
+  padding: 50px;
+}
+
+.airdrop-grid {
+  display: grid;
+  grid-template-rows: 150px 100px 1fr;
+  grid-template-columns: repeat(3, 1fr);
+  background-color: white;
+  border-radius: 5px;
+  grid-gap: 50px;
+}
+
+.airdrop-grid-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+.header {
+  grid-column-start: 2;
+  grid-row-start: 1;
+}
+
+.file-input-btn {
+  grid-column-start: 3;
+}
+
+.grid-logo {
+  grid-column-start: 1;
+  height: 200px;
+}
+
+.grid-csv-input {
+  grid-column: span 3;
+  grid-row-start: 2;
+}
+
+.grid-batch-list {
+  grid-column-start: 2;
+  grid-row-start: 3;
+}
+
+.ht-30 {
+  height: 30px;
+}
+
+.ad-input {
+  font-size: 1.1rem;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.input-label {
+  font-size: 1.15em;
+  font-weight: 300;
+  cursor: pointer;
+  border: 1px solid #999;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 4px 20px 5px 20px;
+}
+
+.input-label:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.csv-input {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.address-input {
+  width: 40%;
+}
+
+.amount-input {
+  width: 15%;
+}
+
+
+.creat-list {
+  list-style: none;
+}
+
+.grid-logo-img {
+  width: 80%;
+  margin-left: 20px;
+}
