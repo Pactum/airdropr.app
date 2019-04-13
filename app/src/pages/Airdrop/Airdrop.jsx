@@ -4,10 +4,7 @@ import RecipientInput from './components/RecipientInput';
 import RecipientTable from './components/RecipientTable';
 import logo from '../../images/airdrop_parachute.png';
 import './airdrop.css';
-import {
-  ContractData,
-  ContractForm,
-} from "drizzle-react-components";
+import { ContractForm } from "drizzle-react-components";
 
 
 class Airdrop extends Component {
@@ -41,10 +38,11 @@ class Airdrop extends Component {
           </div>
           <div className="airdrop-grid-item file-input-btn">
             <FileButton />
-
           </div>
           <div className="airdrop-grid-item grid-csv-input">
-            <RecipientInput airdropperFactory={this.props.AirdropperFactory}/>
+            <RecipientInput
+              ContractForm={ContractForm}
+              airdropperFactory={this.props.AirdropperFactory}/>
           </div>
           <div className="airdrop-grid-item grid-batch-list">
             <RecipientTable recipientList={this.state.recipientList} />

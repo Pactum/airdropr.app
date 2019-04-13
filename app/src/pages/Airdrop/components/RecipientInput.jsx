@@ -36,6 +36,12 @@ export default function RecipientInput(props) {
             className="address-input ad-input"/>
           <button type='submit'>Submit</button>
         </form>
+
+        <props.ContractForm
+          contract="AirdropperFactory"
+          method="createAirdropper"
+          labels={["ERC20 Contract Address"]}
+        />
       </li>
       <li>
         <form className="flex" onSubmit={handleAdd}>

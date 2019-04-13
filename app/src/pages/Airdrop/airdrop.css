@@ -135,3 +135,13 @@
   background-color: #FAFAFA;
   border-right: 1px solid rgba(0,0,0,0.05);
 }
+
+.pure-form {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+}
+
+.pure-form > input {
+  width: 40%;
+}
