@@ -1,5 +1,11 @@
 import React, { Component} from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as airdropActions from '../../actions/airdropActions';
 import FileButton from './components/FileButton';
+import RecipientInput from './components/RecipientInput';
+import RecipientTable from './components/RecipientTable';
 import logo from '../../images/airdrop_parachute.png';
 import './airdrop.css';
 
@@ -8,9 +14,6 @@ class Airdrop extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      file: '',
-      recipientAddress: '',
-      recipientAmount: '',
       recipientList: [
         {
           address: "0xC1B28CF32e6ea25b9191118DE97f3De9d7bC2803",
@@ -24,17 +27,8 @@ class Airdrop extends Component {
     }
   }
 
-  setCsvFile = (e) => {
-    console.log(e);
-  }
-
-  handleAdd = (e) => {
-    e.preventDefault();
-    console.log(e, this.state.recipientList);
-  }
-
-  isOdd = (num) => {
-    return num % 2;
+  componentDidMount() {
+    console.log(this.state, 'props' ,this.props);
   }
 
   render() {
@@ -46,50 +40,14 @@ class Airdrop extends Component {
             <img src={logo} className="grid-logo-img" alt="logo" />
           </div>
           <div className="airdrop-grid-item file-input-btn">
-            <FileButton setCsvFile={this.setCsvFile}/>
+            <FileButton />
+
           </div>
           <div className="airdrop-grid-item grid-csv-input">
-            <ul className="create-list">
-              <li className="create-list-item">
-                <h4 className="text-align-center">
-                  Create a list of airdrop recipients by adding erc20 wallet
-                  addresses with the amount of tokens you would like to send.
-                </h4>
-              </li>
-              <li>
-                <form className="flex" onSubmit={this.handleAdd}>
-                  <input
-                    placeholder="recipient address"
-                    type="text"
-                    className="address-input ad-input"/>
-                  <input
-                    placeholder="amount"
-                    type="text"
-                    className="amount-input ad-input"/>
-                  <button type='submit'>Add</button>
-                </form>
-              </li>
-            </ul>
+            <RecipientInput />
           </div>
           <div className="airdrop-grid-item grid-batch-list">
-            <table className="recipient-table">
-              <tbody>
-                <tr>
-                  <th className="table-header">address</th>
-                  <th className="table-header">amount</th>
-                </tr>
-                {this.state.recipientList.map((recipient, index)  => {
-                  let cssName;
-                  (this.isOdd(index)) ? cssName = "table-cell dark" : cssName = "table-cell light";
-                  return(
-                    <tr key={index}>
-                      <td className={cssName}>{recipient.address}</td>
-                      <td className={cssName}>{recipient.amount}</td>
-                    </tr>
-                  )
-                })}
-              </tbody>
-            </table>
+            <RecipientTable recipientList={this.state.recipientList} />
           </div>
         </div>
       </div>
@@ -98,4 +56,20 @@ class Airdrop extends Component {
 }
 
 
-export default Airdrop;
+
+Airdrop.propTypes = {
+  recipientList:  PropTypes.array,
+}
+
+const mapStateToProps = state => ({
+  recipientList: state.recipientList
+})
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators(airdropActions, dispatch)
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Airdrop);

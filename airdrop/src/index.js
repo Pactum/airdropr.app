@@ -2,13 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Root from './components/root';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
+import AppRoot from './AppRoot';
 
 ReactDOM.render(
-    <Router>
-      <Root />
-    </Router>,
+      <AppRoot>
+          <BrowserRouter>
+              <Route path='/' component={Root} />
+          </BrowserRouter>
+      </AppRoot>,
   document.getElementById('root')
 );
 
