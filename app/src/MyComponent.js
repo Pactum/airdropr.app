@@ -5,12 +5,9 @@ import {
   ContractForm,
 } from "drizzle-react-components";
 
-import logo from "./logo.png";
-
 export default ({ accounts }) => (
   <div className="App">
     <div>
-      <img src={logo} alt="drizzle-logo" />
       <h1>Drizzle Examples</h1>
       <p>Examples of how to get started with Drizzle in various situations.</p>
     </div>

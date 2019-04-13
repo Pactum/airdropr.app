@@ -4,6 +4,7 @@ import { drizzleConnect } from "drizzle-react";
 const mapStateToProps = state => {
   return {
     accounts: state.accounts,
+    accountBalances: state.accountBalances
   };
 };
 

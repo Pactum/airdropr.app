@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { slide as Menu } from 'react-burger-menu';
+// import { AccountData } from "drizzle-react-components";
 
 class TopNavBar extends Component {
 
@@ -8,7 +9,7 @@ class TopNavBar extends Component {
     return(
       <nav className="TopNavBar navbar navbar-expand-sm navbar-light bg-light mb-4 navbar_customize">
         <div className="container">
-          <Link className="navbar-brand" to="/">
+          <Link className="navbar-brand" to="/Airdrop">
             <h1>Airdrop</h1>
           </Link>
           <div className="collapse navbar-collapse" id="mobile-nav">
@@ -18,7 +19,10 @@ class TopNavBar extends Component {
                 </Link>
               </li>
             </ul>
-            {'account: ' + this.props.accounts[0]}
+            <div>
+              <h5>{this.props.accounts[0]}</h5>
+              <p>{this.props.accountBalances[this.props.accounts[0]]}</p>
+            </div>
           </div>
             <Menu noOverlay isOpen={ false } right className='burger-menu'>
               <ul className="navbar-nav mr-auto">

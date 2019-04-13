@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 
-export default function RecipientInput() {
+export default function RecipientInput(props) {
   const [token, setToken] = useState('');
   const [address, setAddress] = useState('');
   const [amount, setAmount] = useState('');
 
   function handleToken(e) {
     e.preventDefault();
-    console.log(token);
+
+    console.log(token, props);
   }
 
   function handleAdd(e) {
