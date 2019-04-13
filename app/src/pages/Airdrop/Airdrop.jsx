@@ -1,8 +1,4 @@
 import React, { Component} from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as airdropActions from '../../actions/airdropActions';
 import FileButton from './components/FileButton';
 import RecipientInput from './components/RecipientInput';
 import RecipientTable from './components/RecipientTable';
@@ -56,20 +52,4 @@ class Airdrop extends Component {
 }
 
 
-
-Airdrop.propTypes = {
-  recipientList:  PropTypes.array,
-}
-
-const mapStateToProps = state => ({
-  recipientList: state.recipientList
-})
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators(airdropActions, dispatch)
-  }
-}
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(Airdrop);
+export default Airdrop;
