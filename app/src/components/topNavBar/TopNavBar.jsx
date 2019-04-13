@@ -5,7 +5,6 @@ import { slide as Menu } from 'react-burger-menu';
 class TopNavBar extends Component {
 
   render() {
-
     return(
       <nav className="TopNavBar navbar navbar-expand-sm navbar-light bg-light mb-4 navbar_customize">
         <div className="container">
@@ -19,6 +18,7 @@ class TopNavBar extends Component {
                 </Link>
               </li>
             </ul>
+            {'account: ' + this.props.accounts[0]}
           </div>
             <Menu noOverlay isOpen={ false } right className='burger-menu'>
               <ul className="navbar-nav mr-auto">
