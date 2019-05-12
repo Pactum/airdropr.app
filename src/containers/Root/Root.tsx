@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Dispatch} from 'redux';
 import {connect} from 'react-redux';
-import {initializeApplication as initializeApplicationAction} from '../../store/application/application.actions';
+import {initializeApplication as initializeApplicationAction} from '../../store/app/app.actions';
 import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
 
 const theme = createMuiTheme({

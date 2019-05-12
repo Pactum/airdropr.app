@@ -113,14 +113,9 @@ export interface IShellComponentProps {
         contentShift: string;
     };
     children: React.ReactNode;
-    enableHeaderAndDrawer?: boolean;
 }
 
 class ShellComponent extends React.Component<IShellComponentProps> {
-    static defaultProps = {
-        enableHeaderAndDrawer: false
-    };
-
     state = {
         open: false,
         anchorEl: null,
@@ -165,22 +160,19 @@ class ShellComponent extends React.Component<IShellComponentProps> {
     }
 
     render() {
-        const {enableHeaderAndDrawer, children} = this.props;
+        const {children, classes} = this.props;
+        const {open} = this.state;
 
-        if (enableHeaderAndDrawer) {
-            const {classes} = this.props;
-            const {open} = this.state;
+        return (
+            <div className={classes.root}>
+                <CssBaseline />
 
-            return (
-                <div className={classes.root}>
-                    <CssBaseline />
+                <AppBar position="fixed">
+                    <Toolbar disableGutters={!open}>
+                    </Toolbar>
+                </AppBar>
 
-                    <AppBar position="fixed">
-                        <Toolbar disableGutters={!open}>
-                        </Toolbar>
-                    </AppBar>
-
-                    <Drawer
+                <Drawer
                         className={classes.drawer}
                         variant="persistent"
                         anchor="left"
@@ -188,35 +180,27 @@ class ShellComponent extends React.Component<IShellComponentProps> {
                         classes={{
                             paper: classes.drawerPaper
                         }}
-                    >
-                        <div className={classes.drawerHeader}>
-                            <IconButton onClick={this.handleDrawerClose}>{<ChevronLeftIcon />}</IconButton>
-                        </div>
-                        <Divider />
-                        <List>
-                            <ListItem button key={'Home'} component={HomeLink}>
-                                <ListItemText secondary={'Home'} />
-                            </ListItem>
-                        </List>
-                    </Drawer>
+                >
+                    <div className={classes.drawerHeader}>
+                        <IconButton onClick={this.handleDrawerClose}>{<ChevronLeftIcon />}</IconButton>
+                    </div>
+                    <Divider />
+                    <List>
+                        <ListItem button key={'Home'} component={HomeLink}>
+                            <ListItemText secondary={'Home'} />
+                        </ListItem>
+                    </List>
+                </Drawer>
 
-                    {/* Render child component(s) */}
-                    <main
-                        className={classNames(classes.content, {
-                            [classes.contentShift]: open
-                        })}
-                    >
-                        <div className={classes.drawerHeader} />
-                        {children}
-                    </main>
-                </div>
-            );
-        }
-
-        return <main>{children}</main>;
+                {/* Render child component(s) */}
+                <main className={classNames(classes.content, {[classes.contentShift]: open})}>
+                    <div className={classes.drawerHeader} />
+                    {children}
+                </main>
+            </div>
+        );
     }
 }
-
 
 const mapStateToProps = ({}: RootState) => ({
     // auth

@@ -30,7 +30,6 @@ interface IAppRouteComponentProps {
 
     accessRestriction?: AccessRestriction | null;
     accessRestrictionRedirect?: LocationDescriptor | null;
-    disableHeaderAndDrawer?: boolean;
 
     path?: string | string[];
     exact?: boolean;
@@ -43,12 +42,11 @@ class AppRouteComponent extends Component<IAppRouteComponentProps & IAppRouteCom
         component: null,
         redirectTo: null,
         accessRestriction: null,
-        accessRestrictionRedirect: null,
-        disableHeaderAndDrawer: false
+        accessRestrictionRedirect: null
     };
 
     render() {
-        const {redirectTo, component, disableHeaderAndDrawer, ...rest} = this.props;
+        const {redirectTo, component, ...rest} = this.props;
 
         // tslint:disable-next-line no-shadowed-variable
         const ComponentToRender = component;
@@ -59,7 +57,7 @@ class AppRouteComponent extends Component<IAppRouteComponentProps & IAppRouteCom
                 render={(props) => {
                     if (ComponentToRender) {
                         return (
-                            <Shell enableHeaderAndDrawer={!disableHeaderAndDrawer}>
+                            <Shell>
                                 <ComponentToRender {...props} />
                             </Shell>
                         );
